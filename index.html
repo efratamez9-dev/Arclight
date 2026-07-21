@@ -28,7 +28,6 @@
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/react-is@18/umd/react-is.production.min.js"></script>
-<script src="https://unpkg.com/prop-types@15/prop-types.min.js"></script>
 <script src="https://unpkg.com/recharts@2/umd/Recharts.min.js"></script>
 
 <!-- Babel standalone: lets the browser run the JSX below directly, no build step -->
@@ -42,17 +41,6 @@
 </head>
 <body>
 <div id="root"></div>
-<script>
-  window.addEventListener("error", function (e) {
-    var root = document.getElementById("root");
-    if (root && !root.hasChildNodes()) {
-      root.innerHTML =
-        '<div style="font-family:sans-serif;padding:24px;color:#C24A3B;white-space:pre-wrap;">' +
-        "Arclight failed to load:\n" + (e.message || e) +
-        "</div>";
-    }
-  });
-</script>
 
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useMemo, useRef } = React;
@@ -1212,15 +1200,7 @@ function Field({ T, label, children }) {
 }
 
 /* ============================== MOUNT ============================== */
-try {
-  ReactDOM.createRoot(document.getElementById("root")).render(<Arclight />);
-} catch (err) {
-  document.getElementById("root").innerHTML =
-    '<div style="font-family:sans-serif;padding:24px;color:#C24A3B;white-space:pre-wrap;">' +
-    'Arclight failed to start:\n' + (err && err.message ? err.message : err) +
-    '</div>';
-  console.error(err);
-}
+ReactDOM.createRoot(document.getElementById("root")).render(<Arclight />);
 </script>
 
 <script>
